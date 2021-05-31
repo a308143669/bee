@@ -24,8 +24,7 @@ dist:
 
 .PHONY: beekeeper
 beekeeper:
-	echo "BEEKEEPER PATH:" $$($(GO) env GOPATH)/bin/beekeeper
-	git clone https://github.com/ethersphere/beekeeper.git && cd beekeeper && git checkout ${BEEKEEPER_BRANCH} && make binary && mkdir -p $$($(GO) env GOPATH)/bin/ && export PATH=${PATH}:$$($(GO) env GOPATH)/bin && mv dist/beekeeper $$($(GO) env GOPATH)/bin/
+	git clone https://github.com/ethersphere/beekeeper.git && cd beekeeper && git checkout ${BEEKEEPER_BRANCH} && make binary && mkdir -p $$($(GO) env GOPATH)/bin/ && mv dist/beekeeper $$($(GO) env GOPATH)/bin/
 #	curl -sSfL https://raw.githubusercontent.com/ethersphere/beekeeper/master/install.sh | BEEKEEPER_INSTALL_DIR=$$($(GO) env GOPATH)/bin USE_SUDO=false bash
 	test -f ~/.beekeeper.yaml || curl -sSfL https://raw.githubusercontent.com/ethersphere/beekeeper/${BEEKEEPER_BRANCH}/config/beekeeper-local.yaml -o ~/.beekeeper.yaml
 	mkdir -p ~/.beekeeper && curl -sSfL https://raw.githubusercontent.com/ethersphere/beekeeper/${BEEKEEPER_BRANCH}/config/ci.yaml -o ~/.beekeeper/ci.yaml
